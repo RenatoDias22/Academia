@@ -19,6 +19,7 @@ public class ClienteDAO {
 	
 
 	/*static {
+		Renato gosta de penis :)  - <---
 		try {
 			new File(FILENAME).createNewFile();
 
