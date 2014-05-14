@@ -4,16 +4,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ClienteDAO {
-	private static final String FILENAME = "clientes";
-	private static ArrayList<Cliente> clientes = new ArrayList<>();
+	
 
-	static {
+	/*static {
 		try {
 			new File(FILENAME).createNewFile();
 
@@ -21,15 +26,28 @@ public class ClienteDAO {
 			e.printStackTrace();
 		}
 		lerLista();
-	}
+	}*/
 
 	public static void inserir(Cliente c) {
-		for (Cliente cliente : clientes)
-			if (cliente.getMatricula() == c.getMatricula())
-				return;
-
-		clientes.add(c);
-		escreverLista();
+		Connection conexao = null;
+		PreparedStatement statememt = null;
+		
+		try{
+			conexao = Conector.getConexao();
+			statememt = conexao.prepareStatement("insert into Cliente values (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			
+			//statememt = setString(1,getSenha());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statememt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public static void alterar(Cliente c) throws ClienteNotFoundException {
@@ -59,17 +77,30 @@ public class ClienteDAO {
 		throw new ClienteNotFoundException();
 	}
 
-	public static List<Cliente> buscar(String nome)
-			throws ClienteNotFoundException {
+	public static List<Cliente> buscar(String nome)	throws ClienteNotFoundException {
 		List<Cliente> aux = new ArrayList<>();
-		for (Cliente c : clientes)
-			if (c.getNome().contains(nome))
-				aux.add(c);
-		if (aux.isEmpty()) {
-			throw new ClienteNotFoundException();
-		}
-			return aux;
+		Connection conexao = null;
+		PreparedStatement statement = null;
 		
+		try {
+			conexao = Conector.getConexao();
+			statement = conexao.prepareStatement("select * from cliente where nome like ? ");
+			statement.setString(1,"%"+nome+"%");
+			ResultSet resultados = statement.executeQuery();
+			while(resultados.next()){
+				//String nome, int matricula,int mensalidadeVencimento, Ficha ficha, 
+//				char sexo, String rG, String cPF, String endereco,
+//				String cEP, String numeroCasa, String bairro, String complemento,
+//				String cidade, String estado, String eMail, String telefone,
+//				String celular, Date dataNascimento
+				String nomeRes = resultados.getString("nome");
+				int matricula = resultados.getInt("matricula");
+				Cliente c = new Cliente(nomeRes, matricula, );
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 
