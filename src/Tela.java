@@ -44,6 +44,15 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JInternalFrame;
+import javax.swing.border.LineBorder;
+import javax.swing.JMenuItem;
+import java.awt.Component;
+import javax.swing.Box;
+import javax.swing.JSeparator;
+import javax.swing.JSlider;
 
 public class Tela extends JFrame {
 	private Cliente c;
@@ -76,6 +85,18 @@ public class Tela extends JFrame {
 	private JTable table_4;
 	private JTextField nomeExerc;
 	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
+	private JTextField textField_13;
 
 	/**
 	 * Launch the application.
@@ -195,6 +216,7 @@ public class Tela extends JFrame {
 		setBounds(0, 0, 626, 400);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
+		contentPane.setLocation(6, 6);
 		contentPane.setBackground(new Color(0, 153, 0));
 
 		contentPane.setBorder(null);
@@ -730,486 +752,674 @@ public class Tela extends JFrame {
 		});
 
 		scrollPane_1.setViewportView(table_2);
-
-		JPanel Adm = new JPanel();
-		Adm.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent arg0) {
-				atualizarModelos();
-			}
-		});
-		Adm.setBackground(SystemColor.inactiveCaption);
-		contentPane.add(Adm, "Adm");
-		Adm.setLayout(new BorderLayout(0, 0));
-
-		JPanel panel_5 = new JPanel();
-		Adm.add(panel_5, BorderLayout.NORTH);
-
-		JButton btnAdicionarAluno = new JButton("Casdastrar Aluno");
-		btnAdicionarAluno.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				((CardLayout) contentPane.getLayout()).show(contentPane,
-						"Cadastro");
-				;
-			}
-		});
-
-		JButton btnSair_2 = new JButton("Sair");
-		btnSair_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				((CardLayout) contentPane.getLayout()).show(contentPane,
-						"Login");
-				;
-			}
-		});
-
-		JButton btnNewButton_6 = new JButton("Editar Exerc\u00EDcios");
-		btnNewButton_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				((CardLayout) contentPane.getLayout()).show(contentPane,
-						"Adm_E");
-			}
-		});
-
-		textField = new JTextField();
-		textField.setColumns(10);
-
-		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				table_3.setModel(new DefaultTableModel(
-						matrizModeloClientesB(textField), new String[] {
-								"Matr\u00EDcula", "Nome" }));
-			}
-		});
-		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
-		gl_panel_5.setHorizontalGroup(gl_panel_5.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_5
-						.createSequentialGroup()
-						.addComponent(btnSair_2)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(btnAdicionarAluno)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE,
-								230, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(btnBuscar)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(btnNewButton_6).addContainerGap()));
-		gl_panel_5.setVerticalGroup(gl_panel_5.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_5
-						.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnSair_2)
-						.addComponent(btnAdicionarAluno)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton_6).addComponent(btnBuscar)));
-		panel_5.setLayout(gl_panel_5);
-
-		JPanel panel_6 = new JPanel();
-		Adm.add(panel_6);
-		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
-
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2
-				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		panel_6.add(scrollPane_2);
-
-		table_3 = new JTable();
-		table_3.setModel(new DefaultTableModel(matrizModeloClientes(),
-				new String[] { "Matr\u00EDcula", "Nome" }) {
-			boolean[] columnEditables = new boolean[] { false, false };
-
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		table_3.getColumnModel().getColumn(0).setResizable(false);
-		table_3.getColumnModel().getColumn(1).setResizable(false);
-		table_3.getColumnModel().getColumn(1).setPreferredWidth(254);
-		scrollPane_2.setViewportView(table_3);
-
-		JPanel panel_7 = new JPanel();
-		Adm.add(panel_7, BorderLayout.SOUTH);
-		panel_7.setLayout(new GridLayout(0, 1, 1, 1));
-
-		JButton btnNewButton_3 = new JButton("Remover Aluno");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					ContasDAO.remConta(Integer.parseInt(""
-							+ table_3.getValueAt(table_3.getSelectedRow(), 0)));
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-				} catch (ClienteNotFoundException e) {
-					e.printStackTrace();
-				}
-				ClienteDAO.excluir(Integer.parseInt(""
-						+ table_3.getValueAt(table_3.getSelectedRow(), 0)));
-				atualizarModelos();
-
-			}
-		});
-		panel_7.add(btnNewButton_3);
-
-		JPanel Adm_E = new JPanel();
-		contentPane.add(Adm_E, "Adm_E");
-		Adm_E.setLayout(new BorderLayout(0, 0));
-
-		JScrollPane scrollPane_5 = new JScrollPane();
-		Adm_E.add(scrollPane_5, BorderLayout.CENTER);
-
-		table_4 = new JTable();
-		table_4.setModel(new DefaultTableModel(matrizModeloExerc(),
-				new String[] { "Exerc\u00EDcio" }));
-
-		scrollPane_5.setViewportView(table_4);
-
-		JPanel panel_8 = new JPanel();
-		Adm_E.add(panel_8, BorderLayout.NORTH);
-
-		JButton btnNewButton_5 = new JButton("Voltar");
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
-			}
-		});
-
-		JButton button = new JButton("Adicionar");
-
-		JLabel lblNewLabel_7 = new JLabel("Nome do Exerc\u00EDcio:");
-		lblNewLabel_7.setFont(new Font("SansSerif", Font.PLAIN, 14));
-
-		nomeExerc = new JTextField();
-		nomeExerc.setColumns(10);
-		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
-		gl_panel_8.setHorizontalGroup(gl_panel_8.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_8
-						.createSequentialGroup()
-						.addComponent(btnNewButton_5)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(lblNewLabel_7)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE,
-								334, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(button).addGap(20)));
-		gl_panel_8.setVerticalGroup(gl_panel_8.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_8
-						.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_5)
-						.addComponent(lblNewLabel_7)
-						.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addComponent(button)));
-		panel_8.setLayout(gl_panel_8);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ExercicioDAO.adicionarExercicio(nomeExerc.getText());
-				atualizarModelos();
-				nomeExerc.setText("");
-			}
-		});
-
-		JPanel panel_9 = new JPanel();
-		Adm_E.add(panel_9, BorderLayout.SOUTH);
-		panel_9.setLayout(new GridLayout(0, 1, 1, 1));
-
-		JButton btnNewButton_4 = new JButton("Remover Exerc\u00EDcio");
-		panel_9.add(btnNewButton_4);
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					ExercicioDAO.remExercicio((String) table_4.getValueAt(
-							table_4.getSelectedRow(), 0));
-					atualizarModelos();
-				} catch (ExercicioNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-
-		JPanel Cadastro = new JPanel();
-		Cadastro.setLayout(null);
-		Cadastro.setBackground(SystemColor.inactiveCaption);
-		contentPane.add(Cadastro, "Cadastro");
-
-		nome = new JTextField();
-		nome.setColumns(10);
-		nome.setBounds(6, 51, 592, 28);
-		Cadastro.add(nome);
-
-		JLabel label_19 = new JLabel("Nome:");
-		label_19.setBounds(6, 34, 46, 14);
-		Cadastro.add(label_19);
-
-		JLabel label_20 = new JLabel("RG:");
-		label_20.setBounds(6, 80, 55, 16);
-		Cadastro.add(label_20);
-
-		rg = new JTextField();
-		rg.setColumns(10);
-		rg.setBounds(6, 98, 122, 28);
-		Cadastro.add(rg);
-
-		JLabel label_21 = new JLabel("CPF:");
-		label_21.setBounds(309, 81, 46, 14);
-		Cadastro.add(label_21);
-
-		cpf = new JTextField();
-		cpf.setColumns(10);
-		cpf.setBounds(309, 98, 131, 28);
-		Cadastro.add(cpf);
-
-		final JRadioButton radioF = new JRadioButton("Feminino");
-		buttonGroup.add(radioF);
-		radioF.setBackground(SystemColor.inactiveCaption);
-		radioF.setBounds(134, 130, 78, 23);
-		Cadastro.add(radioF);
-
-		final JRadioButton radioM = new JRadioButton("Masculino");
-		buttonGroup.add(radioM);
-		radioM.setBackground(SystemColor.inactiveCaption);
-		radioM.setBounds(44, 130, 78, 23);
-		Cadastro.add(radioM);
-
-		JLabel label_22 = new JLabel("Sexo:");
-		label_22.setBounds(6, 134, 46, 14);
-		Cadastro.add(label_22);
-
-		JLabel label_23 = new JLabel("Endere\u00E7o:");
-		label_23.setBounds(6, 160, 58, 14);
-		Cadastro.add(label_23);
-
-		Endereco = new JTextField();
-		Endereco.setColumns(10);
-		Endereco.setBounds(6, 177, 220, 28);
-		Cadastro.add(Endereco);
-
-		JLabel label_24 = new JLabel("N\u00BA:");
-		label_24.setHorizontalAlignment(SwingConstants.LEFT);
-		label_24.setBounds(238, 160, 29, 14);
-		Cadastro.add(label_24);
-
-		n = new JTextField();
-		n.setColumns(10);
-		n.setBounds(238, 177, 62, 28);
-		Cadastro.add(n);
-
-		JLabel label_25 = new JLabel("Complemento:");
-		label_25.setBounds(6, 207, 97, 14);
-		Cadastro.add(label_25);
-
-		complemento = new JTextField();
-		complemento.setColumns(10);
-		complemento.setBounds(6, 225, 185, 28);
-		Cadastro.add(complemento);
-
-		JLabel label_26 = new JLabel("Bairro:");
-		label_26.setBounds(203, 206, 55, 16);
-		Cadastro.add(label_26);
-
-		bairro = new JTextField();
-		bairro.setColumns(10);
-		bairro.setBounds(203, 225, 99, 28);
-		Cadastro.add(bairro);
-
-		JButton button_1 = new JButton("Cancelar");
-
-		button_1.setBounds(6, 338, 89, 23);
-		Cadastro.add(button_1);
-
-		JButton button_2 = new JButton("Cadastrar");
-
-		button_2.setBounds(525, 335, 89, 23);
-		Cadastro.add(button_2);
-
-		JLabel label_27 = new JLabel("Nascimento :");
-		label_27.setBounds(309, 160, 75, 14);
-		Cadastro.add(label_27);
-
-		JLabel label_28 = new JLabel("Dia");
-		label_28.setBounds(396, 160, 29, 14);
-		Cadastro.add(label_28);
-
-		final JComboBox diaCombo = new JComboBox();
-		diaCombo.setModel(new DefaultComboBoxModel(new String[] { "", "1", "2",
-				"3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
-				"14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
-				"24", "25", "26", "27", "28", "29", "30", "31" }));
-		diaCombo.setBounds(396, 181, 59, 20);
-		Cadastro.add(diaCombo);
-
-		final JComboBox mesCombo = new JComboBox();
-		mesCombo.setModel(new DefaultComboBoxModel(new String[] { "", "1", "2",
-				"3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-		mesCombo.setBounds(459, 181, 59, 20);
-		Cadastro.add(mesCombo);
-
-		JLabel label_29 = new JLabel("M\u00EAs");
-		label_29.setBounds(459, 160, 29, 14);
-		Cadastro.add(label_29);
-
-		JLabel label_30 = new JLabel("Ano");
-		label_30.setBounds(525, 160, 29, 14);
-		Cadastro.add(label_30);
-
-		final JComboBox anoCombo = new JComboBox();
-		anoCombo.setModel(new DefaultComboBoxModel(new String[] { "", "1930",
-				"1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938",
-				"1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946",
-				"1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954",
-				"1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962",
-				"1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970",
-				"1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978",
-				"1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986",
-				"1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994",
-				"1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002",
-				"2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010",
-				"2011", "2012", "2013", "2014" }));
-		anoCombo.setBounds(523, 181, 75, 20);
-		Cadastro.add(anoCombo);
-
-		JLabel label_31 = new JLabel("CEP:");
-		label_31.setBounds(309, 207, 55, 16);
-		Cadastro.add(label_31);
-
-		cep = new JTextField();
-		cep.setColumns(10);
-		cep.setBounds(309, 224, 97, 28);
-		Cadastro.add(cep);
-
-		JLabel label_32 = new JLabel("Cidade:");
-		label_32.setBounds(413, 209, 46, 14);
-		Cadastro.add(label_32);
-
-		cidade = new JTextField();
-		cidade.setColumns(10);
-		cidade.setBounds(413, 224, 122, 28);
-		Cadastro.add(cidade);
-
-		JLabel label_33 = new JLabel("UF:");
-		label_33.setBounds(539, 209, 29, 14);
-		Cadastro.add(label_33);
-
-		final JComboBox ufCombo = new JComboBox();
-		ufCombo.setModel(new DefaultComboBoxModel(new String[] { "AC", "AL",
-				"AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
-				"MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO",
-				"RR", "SC", "SP", "SE", "TO" }));
-		ufCombo.setBounds(539, 225, 59, 26);
-		Cadastro.add(ufCombo);
-
-		JLabel label_34 = new JLabel("E-Mail:");
-		label_34.setBounds(6, 264, 46, 14);
-		Cadastro.add(label_34);
-
-		eMail = new JTextField();
-		eMail.setColumns(10);
-		eMail.setBounds(6, 281, 293, 28);
-		Cadastro.add(eMail);
-
-		JLabel label_35 = new JLabel("Telefone");
-		label_35.setBounds(311, 265, 60, 14);
-		Cadastro.add(label_35);
-
-		telefone = new JTextField();
-		telefone.setColumns(10);
-		telefone.setBounds(309, 281, 116, 28);
-		Cadastro.add(telefone);
-
-		JLabel label_36 = new JLabel("Celular");
-		label_36.setBounds(452, 264, 60, 14);
-		Cadastro.add(label_36);
-		celular = new JTextField();
-		celular.setColumns(10);
-		celular.setBounds(452, 280, 116, 28);
-		Cadastro.add(celular);
+		
+		JPanel Admin = new JPanel();
+		contentPane.add(Admin, "name_16740470158295");
+		Admin.setLayout(new BorderLayout(0, 0));
+		
+		JMenuBar menuBar = new JMenuBar();
+		Admin.add(menuBar, BorderLayout.NORTH);
+		
+		JMenu mnCadastrar = new JMenu("Cadastrar");
+		menuBar.add(mnCadastrar);
+		
+		JMenuItem mntmCadastrarAluno = new JMenuItem("Cliente");
+		mnCadastrar.add(mntmCadastrarAluno);
+		
+		JSeparator separator = new JSeparator();
+		mnCadastrar.add(separator);
+		
+		JMenuItem mntmCadastrarInstrutor = new JMenuItem("Instrutor");
+		mnCadastrar.add(mntmCadastrarInstrutor);
+		
+		JMenu mnEditar = new JMenu("Buscar\r\n");
+		menuBar.add(mnEditar);
+		
+		JMenuItem mntmExerccios = new JMenuItem("Exerc\u00EDcios");
+		mnEditar.add(mntmExerccios);
+		
+		JSeparator separator_1 = new JSeparator();
+		mnEditar.add(separator_1);
+		
+		JMenuItem mntmAluno = new JMenuItem("Clientes");
+		mnEditar.add(mntmAluno);
+		
+		JSeparator separator_2 = new JSeparator();
+		mnEditar.add(separator_2);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Instrutores");
+		mnEditar.add(mntmNewMenuItem);
+		
+		JMenuItem mntmSais = new JMenuItem("Sair");
+		mntmSais.setBackground(Color.BLACK);
+		menuBar.add(mntmSais);
+		
+		JPanel CardAdmin = new JPanel();
+		Admin.add(CardAdmin, BorderLayout.CENTER);
+		CardAdmin.setLayout(new CardLayout(0, 0));
+		
+				JPanel Buscar_Aluno = new JPanel();
+				CardAdmin.add(Buscar_Aluno, "name_17049189072812");
+				Buscar_Aluno.addComponentListener(new ComponentAdapter() {
+					@Override
+					public void componentShown(ComponentEvent arg0) {
+						atualizarModelos();
+					}
+				});
+				Buscar_Aluno.setBackground(SystemColor.inactiveCaption);
+				Buscar_Aluno.setLayout(new BorderLayout(0, 0));
+				
+						JPanel panel_5 = new JPanel();
+						Buscar_Aluno.add(panel_5, BorderLayout.NORTH);
+						
+								textField = new JTextField();
+								textField.setColumns(10);
+												
+														JButton btnBuscar = new JButton("Buscar");
+														btnBuscar.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+																table_3.setModel(new DefaultTableModel(
+																		matrizModeloClientesB(textField), new String[] {
+																				"Matr\u00EDcula", "Nome" }));
+															}
+														});
+																GroupLayout gl_panel_5 = new GroupLayout(panel_5);
+																gl_panel_5.setHorizontalGroup(
+																	gl_panel_5.createParallelGroup(Alignment.LEADING)
+																		.addGroup(Alignment.TRAILING, gl_panel_5.createSequentialGroup()
+																			.addContainerGap()
+																			.addComponent(textField, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+																			.addPreferredGap(ComponentPlacement.RELATED)
+																			.addComponent(btnBuscar)
+																			.addContainerGap())
+																);
+																gl_panel_5.setVerticalGroup(
+																	gl_panel_5.createParallelGroup(Alignment.LEADING)
+																		.addGroup(gl_panel_5.createParallelGroup(Alignment.BASELINE)
+																			.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																			.addComponent(btnBuscar))
+																);
+																panel_5.setLayout(gl_panel_5);
+																
+																		JPanel panel_6 = new JPanel();
+																		Buscar_Aluno.add(panel_6);
+																		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
+																		
+																				JScrollPane scrollPane_2 = new JScrollPane();
+																				scrollPane_2
+																						.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+																				panel_6.add(scrollPane_2);
+																				
+																						table_3 = new JTable();
+																						table_3.setModel(new DefaultTableModel(matrizModeloClientes(),
+																								new String[] { "Matr\u00EDcula", "Nome" }) {
+																							boolean[] columnEditables = new boolean[] { false, false };
+
+																							public boolean isCellEditable(int row, int column) {
+																								return columnEditables[column];
+																							}
+																						});
+																						table_3.getColumnModel().getColumn(0).setResizable(false);
+																						table_3.getColumnModel().getColumn(1).setResizable(false);
+																						table_3.getColumnModel().getColumn(1).setPreferredWidth(254);
+																						scrollPane_2.setViewportView(table_3);
+																						
+																								JPanel panel_7 = new JPanel();
+																								Buscar_Aluno.add(panel_7, BorderLayout.SOUTH);
+																								panel_7.setLayout(new GridLayout(0, 2, 1, 1));
+																										
+																										JButton btnEditarAluno = new JButton("Editar Aluno");
+																										panel_7.add(btnEditarAluno);
+																										
+																												JButton btnNewButton_3 = new JButton("Remover Aluno");
+																												btnNewButton_3.addActionListener(new ActionListener() {
+																													public void actionPerformed(ActionEvent arg0) {
+																														try {
+																															ContasDAO.remConta(Integer.parseInt(""
+																																	+ table_3.getValueAt(table_3.getSelectedRow(), 0)));
+																														} catch (NumberFormatException e) {
+																															e.printStackTrace();
+																														} catch (ClienteNotFoundException e) {
+																															e.printStackTrace();
+																														}
+																														ClienteDAO.excluir(Integer.parseInt(""
+																																+ table_3.getValueAt(table_3.getSelectedRow(), 0)));
+																														atualizarModelos();
+
+																													}
+																												});
+																												panel_7.add(btnNewButton_3);
+																										
+																												JPanel Buscar_E = new JPanel();
+																												CardAdmin.add(Buscar_E, "name_17076541215446");
+																												Buscar_E.setLayout(new BorderLayout(0, 0));
+																												
+																														JScrollPane scrollPane_5 = new JScrollPane();
+																														Buscar_E.add(scrollPane_5, BorderLayout.CENTER);
+																														
+																																table_4 = new JTable();
+																																table_4.setModel(new DefaultTableModel(matrizModeloExerc(),
+																																		new String[] { "Exerc\u00EDcio" }));
+																																
+																																		scrollPane_5.setViewportView(table_4);
+																																		
+																																				JPanel panel_8 = new JPanel();
+																																				Buscar_E.add(panel_8, BorderLayout.NORTH);
+																																				
+																																						JButton btnNewButton_5 = new JButton("Voltar");
+																																						btnNewButton_5.addActionListener(new ActionListener() {
+																																							public void actionPerformed(ActionEvent arg0) {
+																																								((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
+																																							}
+																																						});
+																																						
+																																								JButton button = new JButton("Adicionar");
+																																								
+																																										JLabel lblNewLabel_7 = new JLabel("Nome do Exerc\u00EDcio:");
+																																										lblNewLabel_7.setFont(new Font("SansSerif", Font.PLAIN, 14));
+																																										
+																																												nomeExerc = new JTextField();
+																																												nomeExerc.setColumns(10);
+																																												GroupLayout gl_panel_8 = new GroupLayout(panel_8);
+																																												gl_panel_8.setHorizontalGroup(gl_panel_8.createParallelGroup(
+																																														Alignment.LEADING).addGroup(
+																																														gl_panel_8
+																																																.createSequentialGroup()
+																																																.addComponent(btnNewButton_5)
+																																																.addPreferredGap(ComponentPlacement.UNRELATED)
+																																																.addComponent(lblNewLabel_7)
+																																																.addPreferredGap(ComponentPlacement.RELATED)
+																																																.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE,
+																																																		334, GroupLayout.PREFERRED_SIZE)
+																																																.addPreferredGap(ComponentPlacement.RELATED)
+																																																.addComponent(button).addGap(20)));
+																																												gl_panel_8.setVerticalGroup(gl_panel_8.createParallelGroup(
+																																														Alignment.LEADING).addGroup(
+																																														gl_panel_8
+																																																.createParallelGroup(Alignment.BASELINE)
+																																																.addComponent(btnNewButton_5)
+																																																.addComponent(lblNewLabel_7)
+																																																.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE,
+																																																		GroupLayout.DEFAULT_SIZE,
+																																																		GroupLayout.PREFERRED_SIZE)
+																																																.addComponent(button)));
+																																												panel_8.setLayout(gl_panel_8);
+																																												button.addActionListener(new ActionListener() {
+																																													public void actionPerformed(ActionEvent e) {
+																																														ExercicioDAO.adicionarExercicio(nomeExerc.getText());
+																																														atualizarModelos();
+																																														nomeExerc.setText("");
+																																													}
+																																												});
+																																												
+																																														JPanel panel_9 = new JPanel();
+																																														Buscar_E.add(panel_9, BorderLayout.SOUTH);
+																																														panel_9.setLayout(new GridLayout(0, 1, 1, 1));
+																																														
+																																																JButton btnNewButton_4 = new JButton("Remover Exerc\u00EDcio");
+																																																panel_9.add(btnNewButton_4);
+																																																
+																																																		JPanel Cadastro_Cliente = new JPanel();
+																																																		CardAdmin.add(Cadastro_Cliente, "name_21411182643907");
+																																																		Cadastro_Cliente.setLayout(null);
+																																																		Cadastro_Cliente.setBackground(SystemColor.inactiveCaption);
+																																																		
+																																																				nome = new JTextField();
+																																																				nome.setColumns(10);
+																																																				nome.setBounds(6, 40, 592, 28);
+																																																				Cadastro_Cliente.add(nome);
+																																																				
+																																																						JLabel label_19 = new JLabel("Nome:");
+																																																						label_19.setBounds(6, 23, 46, 14);
+																																																						Cadastro_Cliente.add(label_19);
+																																																						
+																																																								JLabel label_20 = new JLabel("RG:");
+																																																								label_20.setBounds(6, 80, 55, 16);
+																																																								Cadastro_Cliente.add(label_20);
+																																																								
+																																																										rg = new JTextField();
+																																																										rg.setColumns(10);
+																																																										rg.setBounds(6, 98, 122, 28);
+																																																										Cadastro_Cliente.add(rg);
+																																																										
+																																																												JLabel label_21 = new JLabel("CPF:");
+																																																												label_21.setBounds(309, 81, 46, 14);
+																																																												Cadastro_Cliente.add(label_21);
+																																																												
+																																																														cpf = new JTextField();
+																																																														cpf.setColumns(10);
+																																																														cpf.setBounds(309, 98, 131, 28);
+																																																														Cadastro_Cliente.add(cpf);
+																																																														
+																																																																final JRadioButton radioF = new JRadioButton("Feminino");
+																																																																buttonGroup.add(radioF);
+																																																																radioF.setBackground(SystemColor.inactiveCaption);
+																																																																radioF.setBounds(134, 130, 78, 23);
+																																																																Cadastro_Cliente.add(radioF);
+																																																																
+																																																																		final JRadioButton radioM = new JRadioButton("Masculino");
+																																																																		buttonGroup.add(radioM);
+																																																																		radioM.setBackground(SystemColor.inactiveCaption);
+																																																																		radioM.setBounds(44, 130, 78, 23);
+																																																																		Cadastro_Cliente.add(radioM);
+																																																																		
+																																																																				JLabel label_22 = new JLabel("Sexo:");
+																																																																				label_22.setBounds(6, 134, 46, 14);
+																																																																				Cadastro_Cliente.add(label_22);
+																																																																				
+																																																																						JLabel label_23 = new JLabel("Endere\u00E7o:");
+																																																																						label_23.setBounds(6, 160, 58, 14);
+																																																																						Cadastro_Cliente.add(label_23);
+																																																																						
+																																																																								Endereco = new JTextField();
+																																																																								Endereco.setColumns(10);
+																																																																								Endereco.setBounds(6, 177, 220, 28);
+																																																																								Cadastro_Cliente.add(Endereco);
+																																																																								
+																																																																										JLabel label_24 = new JLabel("N\u00BA:");
+																																																																										label_24.setHorizontalAlignment(SwingConstants.LEFT);
+																																																																										label_24.setBounds(238, 160, 29, 14);
+																																																																										Cadastro_Cliente.add(label_24);
+																																																																										
+																																																																												n = new JTextField();
+																																																																												n.setColumns(10);
+																																																																												n.setBounds(238, 177, 62, 28);
+																																																																												Cadastro_Cliente.add(n);
+																																																																												
+																																																																														JLabel label_25 = new JLabel("Complemento:");
+																																																																														label_25.setBounds(6, 207, 97, 14);
+																																																																														Cadastro_Cliente.add(label_25);
+																																																																														
+																																																																																complemento = new JTextField();
+																																																																																complemento.setColumns(10);
+																																																																																complemento.setBounds(6, 225, 185, 28);
+																																																																																Cadastro_Cliente.add(complemento);
+																																																																																
+																																																																																		JLabel label_26 = new JLabel("Bairro:");
+																																																																																		label_26.setBounds(203, 206, 55, 16);
+																																																																																		Cadastro_Cliente.add(label_26);
+																																																																																		
+																																																																																				bairro = new JTextField();
+																																																																																				bairro.setColumns(10);
+																																																																																				bairro.setBounds(203, 225, 99, 28);
+																																																																																				Cadastro_Cliente.add(bairro);
+																																																																																				
+																																																																																						JButton button_1 = new JButton("Cancelar");
+																																																																																						
+																																																																																								button_1.setBounds(6, 321, 89, 23);
+																																																																																								Cadastro_Cliente.add(button_1);
+																																																																																								
+																																																																																										JButton button_2 = new JButton("Cadastrar");
+																																																																																										
+																																																																																												button_2.setBounds(525, 321, 89, 23);
+																																																																																												Cadastro_Cliente.add(button_2);
+																																																																																												
+																																																																																														JLabel label_27 = new JLabel("Nascimento :");
+																																																																																														label_27.setBounds(309, 160, 75, 14);
+																																																																																														Cadastro_Cliente.add(label_27);
+																																																																																														
+																																																																																																JLabel label_28 = new JLabel("Dia");
+																																																																																																label_28.setBounds(396, 160, 29, 14);
+																																																																																																Cadastro_Cliente.add(label_28);
+																																																																																																
+																																																																																																		final JComboBox diaCombo = new JComboBox();
+																																																																																																		diaCombo.setModel(new DefaultComboBoxModel(new String[] { "", "1", "2",
+																																																																																																				"3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
+																																																																																																				"14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
+																																																																																																				"24", "25", "26", "27", "28", "29", "30", "31" }));
+																																																																																																		diaCombo.setBounds(396, 181, 59, 20);
+																																																																																																		Cadastro_Cliente.add(diaCombo);
+																																																																																																		
+																																																																																																				final JComboBox mesCombo = new JComboBox();
+																																																																																																				mesCombo.setModel(new DefaultComboBoxModel(new String[] { "", "1", "2",
+																																																																																																						"3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+																																																																																																				mesCombo.setBounds(459, 181, 59, 20);
+																																																																																																				Cadastro_Cliente.add(mesCombo);
+																																																																																																				
+																																																																																																						JLabel label_29 = new JLabel("M\u00EAs");
+																																																																																																						label_29.setBounds(459, 160, 29, 14);
+																																																																																																						Cadastro_Cliente.add(label_29);
+																																																																																																						
+																																																																																																								JLabel label_30 = new JLabel("Ano");
+																																																																																																								label_30.setBounds(525, 160, 29, 14);
+																																																																																																								Cadastro_Cliente.add(label_30);
+																																																																																																								
+																																																																																																										final JComboBox anoCombo = new JComboBox();
+																																																																																																										anoCombo.setModel(new DefaultComboBoxModel(new String[] { "", "1930",
+																																																																																																												"1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938",
+																																																																																																												"1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946",
+																																																																																																												"1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954",
+																																																																																																												"1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962",
+																																																																																																												"1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970",
+																																																																																																												"1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978",
+																																																																																																												"1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986",
+																																																																																																												"1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994",
+																																																																																																												"1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002",
+																																																																																																												"2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010",
+																																																																																																												"2011", "2012", "2013", "2014" }));
+																																																																																																										anoCombo.setBounds(523, 181, 75, 20);
+																																																																																																										Cadastro_Cliente.add(anoCombo);
+																																																																																																										
+																																																																																																												JLabel label_31 = new JLabel("CEP:");
+																																																																																																												label_31.setBounds(309, 207, 55, 16);
+																																																																																																												Cadastro_Cliente.add(label_31);
+																																																																																																												
+																																																																																																														cep = new JTextField();
+																																																																																																														cep.setColumns(10);
+																																																																																																														cep.setBounds(309, 224, 97, 28);
+																																																																																																														Cadastro_Cliente.add(cep);
+																																																																																																														
+																																																																																																																JLabel label_32 = new JLabel("Cidade:");
+																																																																																																																label_32.setBounds(413, 209, 46, 14);
+																																																																																																																Cadastro_Cliente.add(label_32);
+																																																																																																																
+																																																																																																																		cidade = new JTextField();
+																																																																																																																		cidade.setColumns(10);
+																																																																																																																		cidade.setBounds(413, 224, 122, 28);
+																																																																																																																		Cadastro_Cliente.add(cidade);
+																																																																																																																		
+																																																																																																																				JLabel label_33 = new JLabel("UF:");
+																																																																																																																				label_33.setBounds(539, 209, 29, 14);
+																																																																																																																				Cadastro_Cliente.add(label_33);
+																																																																																																																				
+																																																																																																																						final JComboBox ufCombo = new JComboBox();
+																																																																																																																						ufCombo.setModel(new DefaultComboBoxModel(new String[] { "AC", "AL",
+																																																																																																																								"AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
+																																																																																																																								"MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO",
+																																																																																																																								"RR", "SC", "SP", "SE", "TO" }));
+																																																																																																																						ufCombo.setBounds(539, 225, 59, 26);
+																																																																																																																						Cadastro_Cliente.add(ufCombo);
+																																																																																																																						
+																																																																																																																								JLabel label_34 = new JLabel("E-Mail:");
+																																																																																																																								label_34.setBounds(6, 264, 46, 14);
+																																																																																																																								Cadastro_Cliente.add(label_34);
+																																																																																																																								
+																																																																																																																										eMail = new JTextField();
+																																																																																																																										eMail.setColumns(10);
+																																																																																																																										eMail.setBounds(6, 281, 293, 28);
+																																																																																																																										Cadastro_Cliente.add(eMail);
+																																																																																																																										
+																																																																																																																												JLabel label_35 = new JLabel("Telefone");
+																																																																																																																												label_35.setBounds(311, 265, 60, 14);
+																																																																																																																												Cadastro_Cliente.add(label_35);
+																																																																																																																												
+																																																																																																																														telefone = new JTextField();
+																																																																																																																														telefone.setColumns(10);
+																																																																																																																														telefone.setBounds(309, 281, 116, 28);
+																																																																																																																														Cadastro_Cliente.add(telefone);
+																																																																																																																														
+																																																																																																																																JLabel label_36 = new JLabel("Celular");
+																																																																																																																																label_36.setBounds(452, 264, 60, 14);
+																																																																																																																																Cadastro_Cliente.add(label_36);
+																																																																																																																																celular = new JTextField();
+																																																																																																																																celular.setColumns(10);
+																																																																																																																																celular.setBounds(452, 280, 116, 28);
+																																																																																																																																Cadastro_Cliente.add(celular);
+																																																																																																																																
+																																																																																																																																JPanel Cadastro_Ins = new JPanel();
+																																																																																																																																Cadastro_Ins.setLayout(null);
+																																																																																																																																Cadastro_Ins.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																CardAdmin.add(Cadastro_Ins, "name_21698288833216");
+																																																																																																																																
+																																																																																																																																textField_1 = new JTextField();
+																																																																																																																																textField_1.setColumns(10);
+																																																																																																																																textField_1.setBounds(6, 40, 592, 28);
+																																																																																																																																Cadastro_Ins.add(textField_1);
+																																																																																																																																
+																																																																																																																																JLabel label_9 = new JLabel("Nome:");
+																																																																																																																																label_9.setBounds(6, 23, 46, 14);
+																																																																																																																																Cadastro_Ins.add(label_9);
+																																																																																																																																
+																																																																																																																																JLabel label_37 = new JLabel("RG:");
+																																																																																																																																label_37.setBounds(6, 80, 55, 16);
+																																																																																																																																Cadastro_Ins.add(label_37);
+																																																																																																																																
+																																																																																																																																textField_3 = new JTextField();
+																																																																																																																																textField_3.setColumns(10);
+																																																																																																																																textField_3.setBounds(6, 98, 122, 28);
+																																																																																																																																Cadastro_Ins.add(textField_3);
+																																																																																																																																
+																																																																																																																																JLabel label_38 = new JLabel("CPF:");
+																																																																																																																																label_38.setBounds(309, 81, 46, 14);
+																																																																																																																																Cadastro_Ins.add(label_38);
+																																																																																																																																
+																																																																																																																																textField_4 = new JTextField();
+																																																																																																																																textField_4.setColumns(10);
+																																																																																																																																textField_4.setBounds(309, 98, 131, 28);
+																																																																																																																																Cadastro_Ins.add(textField_4);
+																																																																																																																																
+																																																																																																																																JRadioButton radioButton = new JRadioButton("Feminino");
+																																																																																																																																radioButton.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																radioButton.setBounds(134, 130, 78, 23);
+																																																																																																																																Cadastro_Ins.add(radioButton);
+																																																																																																																																
+																																																																																																																																JRadioButton radioButton_1 = new JRadioButton("Masculino");
+																																																																																																																																radioButton_1.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																radioButton_1.setBounds(44, 130, 78, 23);
+																																																																																																																																Cadastro_Ins.add(radioButton_1);
+																																																																																																																																
+																																																																																																																																JLabel label_39 = new JLabel("Sexo:");
+																																																																																																																																label_39.setBounds(6, 134, 46, 14);
+																																																																																																																																Cadastro_Ins.add(label_39);
+																																																																																																																																
+																																																																																																																																JLabel label_40 = new JLabel("Endere\u00E7o:");
+																																																																																																																																label_40.setBounds(6, 160, 58, 14);
+																																																																																																																																Cadastro_Ins.add(label_40);
+																																																																																																																																
+																																																																																																																																textField_5 = new JTextField();
+																																																																																																																																textField_5.setColumns(10);
+																																																																																																																																textField_5.setBounds(6, 177, 220, 28);
+																																																																																																																																Cadastro_Ins.add(textField_5);
+																																																																																																																																
+																																																																																																																																JLabel label_41 = new JLabel("N\u00BA:");
+																																																																																																																																label_41.setHorizontalAlignment(SwingConstants.LEFT);
+																																																																																																																																label_41.setBounds(238, 160, 29, 14);
+																																																																																																																																Cadastro_Ins.add(label_41);
+																																																																																																																																
+																																																																																																																																textField_6 = new JTextField();
+																																																																																																																																textField_6.setColumns(10);
+																																																																																																																																textField_6.setBounds(238, 177, 62, 28);
+																																																																																																																																Cadastro_Ins.add(textField_6);
+																																																																																																																																
+																																																																																																																																JLabel label_42 = new JLabel("Complemento:");
+																																																																																																																																label_42.setBounds(6, 207, 97, 14);
+																																																																																																																																Cadastro_Ins.add(label_42);
+																																																																																																																																
+																																																																																																																																textField_7 = new JTextField();
+																																																																																																																																textField_7.setColumns(10);
+																																																																																																																																textField_7.setBounds(6, 225, 185, 28);
+																																																																																																																																Cadastro_Ins.add(textField_7);
+																																																																																																																																
+																																																																																																																																JLabel label_43 = new JLabel("Bairro:");
+																																																																																																																																label_43.setBounds(203, 206, 55, 16);
+																																																																																																																																Cadastro_Ins.add(label_43);
+																																																																																																																																
+																																																																																																																																textField_8 = new JTextField();
+																																																																																																																																textField_8.setColumns(10);
+																																																																																																																																textField_8.setBounds(203, 225, 99, 28);
+																																																																																																																																Cadastro_Ins.add(textField_8);
+																																																																																																																																
+																																																																																																																																JButton button_3 = new JButton("Cancelar");
+																																																																																																																																button_3.setBounds(6, 321, 89, 23);
+																																																																																																																																Cadastro_Ins.add(button_3);
+																																																																																																																																
+																																																																																																																																JButton button_4 = new JButton("Cadastrar");
+																																																																																																																																button_4.setBounds(525, 321, 89, 23);
+																																																																																																																																Cadastro_Ins.add(button_4);
+																																																																																																																																
+																																																																																																																																JLabel label_44 = new JLabel("Nascimento :");
+																																																																																																																																label_44.setBounds(309, 160, 75, 14);
+																																																																																																																																Cadastro_Ins.add(label_44);
+																																																																																																																																
+																																																																																																																																JLabel label_45 = new JLabel("Dia");
+																																																																																																																																label_45.setBounds(396, 160, 29, 14);
+																																																																																																																																Cadastro_Ins.add(label_45);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_3 = new JComboBox();
+																																																																																																																																comboBox_3.setBounds(396, 181, 59, 20);
+																																																																																																																																Cadastro_Ins.add(comboBox_3);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_4 = new JComboBox();
+																																																																																																																																comboBox_4.setBounds(459, 181, 59, 20);
+																																																																																																																																Cadastro_Ins.add(comboBox_4);
+																																																																																																																																
+																																																																																																																																JLabel label_46 = new JLabel("M\u00EAs");
+																																																																																																																																label_46.setBounds(459, 160, 29, 14);
+																																																																																																																																Cadastro_Ins.add(label_46);
+																																																																																																																																
+																																																																																																																																JLabel label_47 = new JLabel("Ano");
+																																																																																																																																label_47.setBounds(525, 160, 29, 14);
+																																																																																																																																Cadastro_Ins.add(label_47);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_5 = new JComboBox();
+																																																																																																																																comboBox_5.setBounds(523, 181, 75, 20);
+																																																																																																																																Cadastro_Ins.add(comboBox_5);
+																																																																																																																																
+																																																																																																																																JLabel label_48 = new JLabel("CEP:");
+																																																																																																																																label_48.setBounds(309, 207, 55, 16);
+																																																																																																																																Cadastro_Ins.add(label_48);
+																																																																																																																																
+																																																																																																																																textField_9 = new JTextField();
+																																																																																																																																textField_9.setColumns(10);
+																																																																																																																																textField_9.setBounds(309, 224, 97, 28);
+																																																																																																																																Cadastro_Ins.add(textField_9);
+																																																																																																																																
+																																																																																																																																JLabel label_49 = new JLabel("Cidade:");
+																																																																																																																																label_49.setBounds(413, 209, 46, 14);
+																																																																																																																																Cadastro_Ins.add(label_49);
+																																																																																																																																
+																																																																																																																																textField_10 = new JTextField();
+																																																																																																																																textField_10.setColumns(10);
+																																																																																																																																textField_10.setBounds(413, 224, 122, 28);
+																																																																																																																																Cadastro_Ins.add(textField_10);
+																																																																																																																																
+																																																																																																																																JLabel label_50 = new JLabel("UF:");
+																																																																																																																																label_50.setBounds(539, 209, 29, 14);
+																																																																																																																																Cadastro_Ins.add(label_50);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_6 = new JComboBox();
+																																																																																																																																comboBox_6.setBounds(539, 225, 59, 26);
+																																																																																																																																Cadastro_Ins.add(comboBox_6);
+																																																																																																																																
+																																																																																																																																JLabel label_51 = new JLabel("E-Mail:");
+																																																																																																																																label_51.setBounds(6, 264, 46, 14);
+																																																																																																																																Cadastro_Ins.add(label_51);
+																																																																																																																																
+																																																																																																																																textField_11 = new JTextField();
+																																																																																																																																textField_11.setColumns(10);
+																																																																																																																																textField_11.setBounds(6, 281, 293, 28);
+																																																																																																																																Cadastro_Ins.add(textField_11);
+																																																																																																																																
+																																																																																																																																JLabel label_52 = new JLabel("Telefone");
+																																																																																																																																label_52.setBounds(311, 265, 60, 14);
+																																																																																																																																Cadastro_Ins.add(label_52);
+																																																																																																																																
+																																																																																																																																textField_12 = new JTextField();
+																																																																																																																																textField_12.setColumns(10);
+																																																																																																																																textField_12.setBounds(309, 281, 116, 28);
+																																																																																																																																Cadastro_Ins.add(textField_12);
+																																																																																																																																
+																																																																																																																																JLabel label_53 = new JLabel("Celular");
+																																																																																																																																label_53.setBounds(452, 264, 60, 14);
+																																																																																																																																Cadastro_Ins.add(label_53);
+																																																																																																																																
+																																																																																																																																textField_13 = new JTextField();
+																																																																																																																																textField_13.setColumns(10);
+																																																																																																																																textField_13.setBounds(452, 280, 116, 28);
+																																																																																																																																Cadastro_Ins.add(textField_13);
+																																																																																																																																
+																																																																																																																																JPanel panel_10 = new JPanel();
+																																																																																																																																CardAdmin.add(panel_10, "name_24811568972940");
+																																																																																																																																button_2.addActionListener(new ActionListener() {
+																																																																																																																																	public void actionPerformed(ActionEvent arg0) {
+																																																																																																																																		Cliente aux = new Cliente();
+																																																																																																																																		aux.setMatricula(ClienteDAO.proximaMatricula());
+																																																																																																																																		aux.setNome(nome.getText());
+																																																																																																																																		aux.setRG(rg.getText());
+																																																																																																																																		aux.setCPF(cpf.getText());
+																																																																																																																																		aux.setEndereco(Endereco.getText());
+																																																																																																																																		aux.setNumeroCasa(n.getText());
+																																																																																																																																		aux.setComplemento(complemento.getText());
+																																																																																																																																		aux.setBairro(bairro.getText());
+																																																																																																																																		aux.setCEP(cep.getText());
+																																																																																																																																		aux.setCidade(cidade.getText());
+																																																																																																																																		aux.seteMail(eMail.getText());
+																																																																																																																																		aux.setTelefone(telefone.getText());
+																																																																																																																																		aux.setCelular(celular.getText());
+																																																																																																																																		aux.setEstado((String) ufCombo.getSelectedItem());
+																																																																																																																																		try {
+																																																																																																																																			aux.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy")
+																																																																																																																																					.parse(diaCombo.getSelectedItem() + "/"
+																																																																																																																																							+ mesCombo.getSelectedItem() + "/"
+																																																																																																																																							+ anoCombo.getSelectedItem()));
+																																																																																																																																		} catch (ParseException e) {
+																																																																																																																																			// TODO Auto-generated catch block
+																																																																																																																																			e.printStackTrace();
+																																																																																																																																		}
+																																																																																																																																		if (buttonGroup.isSelected(radioM.getModel()))
+																																																																																																																																			aux.setSexo('M');
+																																																																																																																																		else
+																																																																																																																																			aux.setSexo('F');
+
+																																																																																																																																		ContasDAO.addConta(aux.getMatricula(),
+																																																																																																																																				(String) JOptionPane.showInputDialog("Digite a senha:"));
+																																																																																																																																		ClienteDAO.inserir(aux);
+
+																																																																																																																																		JOptionPane.showMessageDialog(null,
+																																																																																																																																				"Cadastro feito com sucesso.");
+																																																																																																																																		((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
+																																																																																																																																		nome.setText("");
+																																																																																																																																		rg.setText("");
+																																																																																																																																		cpf.setText("");
+																																																																																																																																		Endereco.setText("");
+																																																																																																																																		n.setText("");
+																																																																																																																																		complemento.setText("");
+																																																																																																																																		bairro.setText("");
+																																																																																																																																		cep.setText("");
+																																																																																																																																		cidade.setText("");
+																																																																																																																																		eMail.setText("");
+																																																																																																																																		telefone.setText("");
+																																																																																																																																		celular.setText("");
+																																																																																																																																		diaCombo.setSelectedIndex(0);
+																																																																																																																																		mesCombo.setSelectedIndex(0);
+																																																																																																																																		anoCombo.setSelectedIndex(0);
+																																																																																																																																		ufCombo.setSelectedIndex(0);
+																																																																																																																																	}
+																																																																																																																																});
+																																																																																																																																button_1.addActionListener(new ActionListener() {
+																																																																																																																																	public void actionPerformed(ActionEvent e) {
+																																																																																																																																		((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
+																																																																																																																																		nome.setText("");
+																																																																																																																																		rg.setText("");
+																																																																																																																																		cpf.setText("");
+																																																																																																																																		Endereco.setText("");
+																																																																																																																																		n.setText("");
+																																																																																																																																		complemento.setText("");
+																																																																																																																																		bairro.setText("");
+																																																																																																																																		cep.setText("");
+																																																																																																																																		cidade.setText("");
+																																																																																																																																		eMail.setText("");
+																																																																																																																																		telefone.setText("");
+																																																																																																																																		celular.setText("");
+																																																																																																																																		diaCombo.setSelectedIndex(0);
+																																																																																																																																		mesCombo.setSelectedIndex(0);
+																																																																																																																																		anoCombo.setSelectedIndex(0);
+																																																																																																																																		ufCombo.setSelectedIndex(0);
+																																																																																																																																	}
+																																																																																																																																});
+																																																btnNewButton_4.addActionListener(new ActionListener() {
+																																																	public void actionPerformed(ActionEvent e) {
+																																																		try {
+																																																			ExercicioDAO.remExercicio((String) table_4.getValueAt(
+																																																					table_4.getSelectedRow(), 0));
+																																																			atualizarModelos();
+																																																		} catch (ExercicioNotFoundException e1) {
+																																																			// TODO Auto-generated catch block
+																																																			e1.printStackTrace();
+																																																		}
+																																																	}
+																																																});
 		setLocationRelativeTo(null);
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Cliente aux = new Cliente();
-				aux.setMatricula(ClienteDAO.proximaMatricula());
-				aux.setNome(nome.getText());
-				aux.setRG(rg.getText());
-				aux.setCPF(cpf.getText());
-				aux.setEndereco(Endereco.getText());
-				aux.setNumeroCasa(n.getText());
-				aux.setComplemento(complemento.getText());
-				aux.setBairro(bairro.getText());
-				aux.setCEP(cep.getText());
-				aux.setCidade(cidade.getText());
-				aux.seteMail(eMail.getText());
-				aux.setTelefone(telefone.getText());
-				aux.setCelular(celular.getText());
-				aux.setEstado((String) ufCombo.getSelectedItem());
-				try {
-					aux.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy")
-							.parse(diaCombo.getSelectedItem() + "/"
-									+ mesCombo.getSelectedItem() + "/"
-									+ anoCombo.getSelectedItem()));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				if (buttonGroup.isSelected(radioM.getModel()))
-					aux.setSexo('M');
-				else
-					aux.setSexo('F');
-
-				ContasDAO.addConta(aux.getMatricula(),
-						(String) JOptionPane.showInputDialog("Digite a senha:"));
-				ClienteDAO.inserir(aux);
-
-				JOptionPane.showMessageDialog(null,
-						"Cadastro feito com sucesso.");
-				((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
-				nome.setText("");
-				rg.setText("");
-				cpf.setText("");
-				Endereco.setText("");
-				n.setText("");
-				complemento.setText("");
-				bairro.setText("");
-				cep.setText("");
-				cidade.setText("");
-				eMail.setText("");
-				telefone.setText("");
-				celular.setText("");
-				diaCombo.setSelectedIndex(0);
-				mesCombo.setSelectedIndex(0);
-				anoCombo.setSelectedIndex(0);
-				ufCombo.setSelectedIndex(0);
-			}
-		});
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
-				nome.setText("");
-				rg.setText("");
-				cpf.setText("");
-				Endereco.setText("");
-				n.setText("");
-				complemento.setText("");
-				bairro.setText("");
-				cep.setText("");
-				cidade.setText("");
-				eMail.setText("");
-				telefone.setText("");
-				celular.setText("");
-				diaCombo.setSelectedIndex(0);
-				mesCombo.setSelectedIndex(0);
-				anoCombo.setSelectedIndex(0);
-				ufCombo.setSelectedIndex(0);
-			}
-		});
 		Logan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 

@@ -19,6 +19,7 @@ public class ClienteDAO {
 	
 
 	/*static {
+		
 		try {
 			new File(FILENAME).createNewFile();
 
@@ -34,8 +35,11 @@ public class ClienteDAO {
 		
 		try{
 			conexao = Conector.getConexao();
-			statememt = conexao.prepareStatement("insert into Cliente values (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			
+			statememt = conexao.prepareStatement("insert into Cliente values (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			statememt.setString(1, c.getNome());
+			statememt.setString(2, c.getRG());
+			statememt.setString(3, c.getCPF());
+			statememt.setString(4, c.getSexo());
 			//statememt = setString(1,getSenha());
 			
 		} catch (SQLException e) {
