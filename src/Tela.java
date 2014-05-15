@@ -97,6 +97,30 @@ public class Tela extends JFrame {
 	private JTextField textField_11;
 	private JTextField textField_12;
 	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JTextField textField_17;
+	private JTextField textField_18;
+	private JTextField textField_19;
+	private JTextField textField_20;
+	private JTextField textField_21;
+	private JTextField textField_22;
+	private JTextField textField_23;
+	private JTextField textField_24;
+	private JTextField textField_25;
+	private JTextField textField_26;
+	private JTextField textField_27;
+	private JTextField textField_28;
+	private JTextField textField_29;
+	private JTextField textField_30;
+	private JTextField textField_31;
+	private JTextField textField_32;
+	private JTextField textField_33;
+	private JTextField textField_34;
+	private JTextField textField_35;
+	private JTextField textField_36;
+	private JTextField textField_37;
 
 	/**
 	 * Launch the application.
@@ -798,19 +822,19 @@ public class Tela extends JFrame {
 		Admin.add(CardAdmin, BorderLayout.CENTER);
 		CardAdmin.setLayout(new CardLayout(0, 0));
 		
-				JPanel Buscar_Aluno = new JPanel();
-				CardAdmin.add(Buscar_Aluno, "name_17049189072812");
-				Buscar_Aluno.addComponentListener(new ComponentAdapter() {
+				JPanel Buscar_Cliente = new JPanel();
+				CardAdmin.add(Buscar_Cliente, "name_17049189072812");
+				Buscar_Cliente.addComponentListener(new ComponentAdapter() {
 					@Override
 					public void componentShown(ComponentEvent arg0) {
 						atualizarModelos();
 					}
 				});
-				Buscar_Aluno.setBackground(SystemColor.inactiveCaption);
-				Buscar_Aluno.setLayout(new BorderLayout(0, 0));
+				Buscar_Cliente.setBackground(SystemColor.inactiveCaption);
+				Buscar_Cliente.setLayout(new BorderLayout(0, 0));
 				
 						JPanel panel_5 = new JPanel();
-						Buscar_Aluno.add(panel_5, BorderLayout.NORTH);
+						Buscar_Cliente.add(panel_5, BorderLayout.NORTH);
 						
 								textField = new JTextField();
 								textField.setColumns(10);
@@ -842,7 +866,7 @@ public class Tela extends JFrame {
 																panel_5.setLayout(gl_panel_5);
 																
 																		JPanel panel_6 = new JPanel();
-																		Buscar_Aluno.add(panel_6);
+																		Buscar_Cliente.add(panel_6);
 																		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
 																		
 																				JScrollPane scrollPane_2 = new JScrollPane();
@@ -865,7 +889,7 @@ public class Tela extends JFrame {
 																						scrollPane_2.setViewportView(table_3);
 																						
 																								JPanel panel_7 = new JPanel();
-																								Buscar_Aluno.add(panel_7, BorderLayout.SOUTH);
+																								Buscar_Cliente.add(panel_7, BorderLayout.SOUTH);
 																								panel_7.setLayout(new GridLayout(0, 2, 1, 1));
 																										
 																										JButton btnEditarAluno = new JButton("Editar Aluno");
@@ -890,12 +914,12 @@ public class Tela extends JFrame {
 																												});
 																												panel_7.add(btnNewButton_3);
 																										
-																												JPanel Buscar_E = new JPanel();
-																												CardAdmin.add(Buscar_E, "name_17076541215446");
-																												Buscar_E.setLayout(new BorderLayout(0, 0));
+																												JPanel Buscar_Exer = new JPanel();
+																												CardAdmin.add(Buscar_Exer, "name_17076541215446");
+																												Buscar_Exer.setLayout(new BorderLayout(0, 0));
 																												
 																														JScrollPane scrollPane_5 = new JScrollPane();
-																														Buscar_E.add(scrollPane_5, BorderLayout.CENTER);
+																														Buscar_Exer.add(scrollPane_5, BorderLayout.CENTER);
 																														
 																																table_4 = new JTable();
 																																table_4.setModel(new DefaultTableModel(matrizModeloExerc(),
@@ -904,14 +928,7 @@ public class Tela extends JFrame {
 																																		scrollPane_5.setViewportView(table_4);
 																																		
 																																				JPanel panel_8 = new JPanel();
-																																				Buscar_E.add(panel_8, BorderLayout.NORTH);
-																																				
-																																						JButton btnNewButton_5 = new JButton("Voltar");
-																																						btnNewButton_5.addActionListener(new ActionListener() {
-																																							public void actionPerformed(ActionEvent arg0) {
-																																								((CardLayout) contentPane.getLayout()).show(contentPane, "Adm");
-																																							}
-																																						});
+																																				Buscar_Exer.add(panel_8, BorderLayout.NORTH);
 																																						
 																																								JButton button = new JButton("Adicionar");
 																																								
@@ -921,28 +938,24 @@ public class Tela extends JFrame {
 																																												nomeExerc = new JTextField();
 																																												nomeExerc.setColumns(10);
 																																												GroupLayout gl_panel_8 = new GroupLayout(panel_8);
-																																												gl_panel_8.setHorizontalGroup(gl_panel_8.createParallelGroup(
-																																														Alignment.LEADING).addGroup(
-																																														gl_panel_8
-																																																.createSequentialGroup()
-																																																.addComponent(btnNewButton_5)
-																																																.addPreferredGap(ComponentPlacement.UNRELATED)
-																																																.addComponent(lblNewLabel_7)
-																																																.addPreferredGap(ComponentPlacement.RELATED)
-																																																.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE,
-																																																		334, GroupLayout.PREFERRED_SIZE)
-																																																.addPreferredGap(ComponentPlacement.RELATED)
-																																																.addComponent(button).addGap(20)));
-																																												gl_panel_8.setVerticalGroup(gl_panel_8.createParallelGroup(
-																																														Alignment.LEADING).addGroup(
-																																														gl_panel_8
-																																																.createParallelGroup(Alignment.BASELINE)
-																																																.addComponent(btnNewButton_5)
-																																																.addComponent(lblNewLabel_7)
-																																																.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE,
-																																																		GroupLayout.DEFAULT_SIZE,
-																																																		GroupLayout.PREFERRED_SIZE)
-																																																.addComponent(button)));
+																																												gl_panel_8.setHorizontalGroup(
+																																													gl_panel_8.createParallelGroup(Alignment.LEADING)
+																																														.addGroup(gl_panel_8.createSequentialGroup()
+																																															.addContainerGap()
+																																															.addComponent(lblNewLabel_7, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+																																															.addPreferredGap(ComponentPlacement.RELATED)
+																																															.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+																																															.addPreferredGap(ComponentPlacement.RELATED)
+																																															.addComponent(button)
+																																															.addGap(32))
+																																												);
+																																												gl_panel_8.setVerticalGroup(
+																																													gl_panel_8.createParallelGroup(Alignment.LEADING)
+																																														.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
+																																															.addComponent(lblNewLabel_7)
+																																															.addComponent(nomeExerc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																															.addComponent(button))
+																																												);
 																																												panel_8.setLayout(gl_panel_8);
 																																												button.addActionListener(new ActionListener() {
 																																													public void actionPerformed(ActionEvent e) {
@@ -953,7 +966,7 @@ public class Tela extends JFrame {
 																																												});
 																																												
 																																														JPanel panel_9 = new JPanel();
-																																														Buscar_E.add(panel_9, BorderLayout.SOUTH);
+																																														Buscar_Exer.add(panel_9, BorderLayout.SOUTH);
 																																														panel_9.setLayout(new GridLayout(0, 1, 1, 1));
 																																														
 																																																JButton btnNewButton_4 = new JButton("Remover Exerc\u00EDcio");
@@ -1328,8 +1341,349 @@ public class Tela extends JFrame {
 																																																																																																																																textField_13.setBounds(452, 280, 116, 28);
 																																																																																																																																Cadastro_Ins.add(textField_13);
 																																																																																																																																
-																																																																																																																																JPanel panel_10 = new JPanel();
-																																																																																																																																CardAdmin.add(panel_10, "name_24811568972940");
+																																																																																																																																JPanel Editar_Cliente = new JPanel();
+																																																																																																																																Editar_Cliente.setLayout(null);
+																																																																																																																																Editar_Cliente.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																CardAdmin.add(Editar_Cliente, "name_26192703693592");
+																																																																																																																																
+																																																																																																																																textField_14 = new JTextField();
+																																																																																																																																textField_14.setColumns(10);
+																																																																																																																																textField_14.setBounds(6, 40, 592, 28);
+																																																																																																																																Editar_Cliente.add(textField_14);
+																																																																																																																																
+																																																																																																																																JLabel label_54 = new JLabel("Nome:");
+																																																																																																																																label_54.setBounds(6, 23, 46, 14);
+																																																																																																																																Editar_Cliente.add(label_54);
+																																																																																																																																
+																																																																																																																																JLabel label_55 = new JLabel("RG:");
+																																																																																																																																label_55.setBounds(6, 80, 55, 16);
+																																																																																																																																Editar_Cliente.add(label_55);
+																																																																																																																																
+																																																																																																																																textField_15 = new JTextField();
+																																																																																																																																textField_15.setColumns(10);
+																																																																																																																																textField_15.setBounds(6, 98, 122, 28);
+																																																																																																																																Editar_Cliente.add(textField_15);
+																																																																																																																																
+																																																																																																																																JLabel label_56 = new JLabel("CPF:");
+																																																																																																																																label_56.setBounds(309, 81, 46, 14);
+																																																																																																																																Editar_Cliente.add(label_56);
+																																																																																																																																
+																																																																																																																																textField_16 = new JTextField();
+																																																																																																																																textField_16.setColumns(10);
+																																																																																																																																textField_16.setBounds(309, 98, 131, 28);
+																																																																																																																																Editar_Cliente.add(textField_16);
+																																																																																																																																
+																																																																																																																																JRadioButton radioButton_2 = new JRadioButton("Feminino");
+																																																																																																																																radioButton_2.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																radioButton_2.setBounds(134, 130, 78, 23);
+																																																																																																																																Editar_Cliente.add(radioButton_2);
+																																																																																																																																
+																																																																																																																																JRadioButton radioButton_3 = new JRadioButton("Masculino");
+																																																																																																																																radioButton_3.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																radioButton_3.setBounds(44, 130, 78, 23);
+																																																																																																																																Editar_Cliente.add(radioButton_3);
+																																																																																																																																
+																																																																																																																																JLabel label_57 = new JLabel("Sexo:");
+																																																																																																																																label_57.setBounds(6, 134, 46, 14);
+																																																																																																																																Editar_Cliente.add(label_57);
+																																																																																																																																
+																																																																																																																																JLabel label_58 = new JLabel("Endere\u00E7o:");
+																																																																																																																																label_58.setBounds(6, 160, 58, 14);
+																																																																																																																																Editar_Cliente.add(label_58);
+																																																																																																																																
+																																																																																																																																textField_17 = new JTextField();
+																																																																																																																																textField_17.setColumns(10);
+																																																																																																																																textField_17.setBounds(6, 177, 220, 28);
+																																																																																																																																Editar_Cliente.add(textField_17);
+																																																																																																																																
+																																																																																																																																JLabel label_59 = new JLabel("N\u00BA:");
+																																																																																																																																label_59.setHorizontalAlignment(SwingConstants.LEFT);
+																																																																																																																																label_59.setBounds(238, 160, 29, 14);
+																																																																																																																																Editar_Cliente.add(label_59);
+																																																																																																																																
+																																																																																																																																textField_18 = new JTextField();
+																																																																																																																																textField_18.setColumns(10);
+																																																																																																																																textField_18.setBounds(238, 177, 62, 28);
+																																																																																																																																Editar_Cliente.add(textField_18);
+																																																																																																																																
+																																																																																																																																JLabel label_60 = new JLabel("Complemento:");
+																																																																																																																																label_60.setBounds(6, 207, 97, 14);
+																																																																																																																																Editar_Cliente.add(label_60);
+																																																																																																																																
+																																																																																																																																textField_19 = new JTextField();
+																																																																																																																																textField_19.setColumns(10);
+																																																																																																																																textField_19.setBounds(6, 225, 185, 28);
+																																																																																																																																Editar_Cliente.add(textField_19);
+																																																																																																																																
+																																																																																																																																JLabel label_61 = new JLabel("Bairro:");
+																																																																																																																																label_61.setBounds(203, 206, 55, 16);
+																																																																																																																																Editar_Cliente.add(label_61);
+																																																																																																																																
+																																																																																																																																textField_20 = new JTextField();
+																																																																																																																																textField_20.setColumns(10);
+																																																																																																																																textField_20.setBounds(203, 225, 99, 28);
+																																																																																																																																Editar_Cliente.add(textField_20);
+																																																																																																																																
+																																																																																																																																JButton button_5 = new JButton("Cancelar");
+																																																																																																																																button_5.setBounds(6, 321, 89, 23);
+																																																																																																																																Editar_Cliente.add(button_5);
+																																																																																																																																
+																																																																																																																																JButton button_6 = new JButton("Cadastrar");
+																																																																																																																																button_6.setBounds(525, 321, 89, 23);
+																																																																																																																																Editar_Cliente.add(button_6);
+																																																																																																																																
+																																																																																																																																JLabel label_62 = new JLabel("Nascimento :");
+																																																																																																																																label_62.setBounds(309, 160, 75, 14);
+																																																																																																																																Editar_Cliente.add(label_62);
+																																																																																																																																
+																																																																																																																																JLabel label_63 = new JLabel("Dia");
+																																																																																																																																label_63.setBounds(396, 160, 29, 14);
+																																																																																																																																Editar_Cliente.add(label_63);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_7 = new JComboBox();
+																																																																																																																																comboBox_7.setBounds(396, 181, 59, 20);
+																																																																																																																																Editar_Cliente.add(comboBox_7);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_8 = new JComboBox();
+																																																																																																																																comboBox_8.setBounds(459, 181, 59, 20);
+																																																																																																																																Editar_Cliente.add(comboBox_8);
+																																																																																																																																
+																																																																																																																																JLabel label_64 = new JLabel("M\u00EAs");
+																																																																																																																																label_64.setBounds(459, 160, 29, 14);
+																																																																																																																																Editar_Cliente.add(label_64);
+																																																																																																																																
+																																																																																																																																JLabel label_65 = new JLabel("Ano");
+																																																																																																																																label_65.setBounds(525, 160, 29, 14);
+																																																																																																																																Editar_Cliente.add(label_65);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_9 = new JComboBox();
+																																																																																																																																comboBox_9.setBounds(523, 181, 75, 20);
+																																																																																																																																Editar_Cliente.add(comboBox_9);
+																																																																																																																																
+																																																																																																																																JLabel label_66 = new JLabel("CEP:");
+																																																																																																																																label_66.setBounds(309, 207, 55, 16);
+																																																																																																																																Editar_Cliente.add(label_66);
+																																																																																																																																
+																																																																																																																																textField_21 = new JTextField();
+																																																																																																																																textField_21.setColumns(10);
+																																																																																																																																textField_21.setBounds(309, 224, 97, 28);
+																																																																																																																																Editar_Cliente.add(textField_21);
+																																																																																																																																
+																																																																																																																																JLabel label_67 = new JLabel("Cidade:");
+																																																																																																																																label_67.setBounds(413, 209, 46, 14);
+																																																																																																																																Editar_Cliente.add(label_67);
+																																																																																																																																
+																																																																																																																																textField_22 = new JTextField();
+																																																																																																																																textField_22.setColumns(10);
+																																																																																																																																textField_22.setBounds(413, 224, 122, 28);
+																																																																																																																																Editar_Cliente.add(textField_22);
+																																																																																																																																
+																																																																																																																																JLabel label_68 = new JLabel("UF:");
+																																																																																																																																label_68.setBounds(539, 209, 29, 14);
+																																																																																																																																Editar_Cliente.add(label_68);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_10 = new JComboBox();
+																																																																																																																																comboBox_10.setBounds(539, 225, 59, 26);
+																																																																																																																																Editar_Cliente.add(comboBox_10);
+																																																																																																																																
+																																																																																																																																JLabel label_69 = new JLabel("E-Mail:");
+																																																																																																																																label_69.setBounds(6, 264, 46, 14);
+																																																																																																																																Editar_Cliente.add(label_69);
+																																																																																																																																
+																																																																																																																																textField_23 = new JTextField();
+																																																																																																																																textField_23.setColumns(10);
+																																																																																																																																textField_23.setBounds(6, 281, 293, 28);
+																																																																																																																																Editar_Cliente.add(textField_23);
+																																																																																																																																
+																																																																																																																																JLabel label_70 = new JLabel("Telefone");
+																																																																																																																																label_70.setBounds(311, 265, 60, 14);
+																																																																																																																																Editar_Cliente.add(label_70);
+																																																																																																																																
+																																																																																																																																textField_24 = new JTextField();
+																																																																																																																																textField_24.setColumns(10);
+																																																																																																																																textField_24.setBounds(309, 281, 116, 28);
+																																																																																																																																Editar_Cliente.add(textField_24);
+																																																																																																																																
+																																																																																																																																JLabel label_71 = new JLabel("Celular");
+																																																																																																																																label_71.setBounds(452, 264, 60, 14);
+																																																																																																																																Editar_Cliente.add(label_71);
+																																																																																																																																
+																																																																																																																																textField_25 = new JTextField();
+																																																																																																																																textField_25.setColumns(10);
+																																																																																																																																textField_25.setBounds(452, 280, 116, 28);
+																																																																																																																																Editar_Cliente.add(textField_25);
+																																																																																																																																
+																																																																																																																																JPanel Editar_Ins = new JPanel();
+																																																																																																																																Editar_Ins.setLayout(null);
+																																																																																																																																Editar_Ins.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																CardAdmin.add(Editar_Ins, "name_26412355461259");
+																																																																																																																																
+																																																																																																																																textField_26 = new JTextField();
+																																																																																																																																textField_26.setColumns(10);
+																																																																																																																																textField_26.setBounds(6, 40, 592, 28);
+																																																																																																																																Editar_Ins.add(textField_26);
+																																																																																																																																
+																																																																																																																																JLabel label_72 = new JLabel("Nome:");
+																																																																																																																																label_72.setBounds(6, 23, 46, 14);
+																																																																																																																																Editar_Ins.add(label_72);
+																																																																																																																																
+																																																																																																																																JLabel label_73 = new JLabel("RG:");
+																																																																																																																																label_73.setBounds(6, 80, 55, 16);
+																																																																																																																																Editar_Ins.add(label_73);
+																																																																																																																																
+																																																																																																																																textField_27 = new JTextField();
+																																																																																																																																textField_27.setColumns(10);
+																																																																																																																																textField_27.setBounds(6, 98, 122, 28);
+																																																																																																																																Editar_Ins.add(textField_27);
+																																																																																																																																
+																																																																																																																																JLabel label_74 = new JLabel("CPF:");
+																																																																																																																																label_74.setBounds(309, 81, 46, 14);
+																																																																																																																																Editar_Ins.add(label_74);
+																																																																																																																																
+																																																																																																																																textField_28 = new JTextField();
+																																																																																																																																textField_28.setColumns(10);
+																																																																																																																																textField_28.setBounds(309, 98, 131, 28);
+																																																																																																																																Editar_Ins.add(textField_28);
+																																																																																																																																
+																																																																																																																																JRadioButton radioButton_4 = new JRadioButton("Feminino");
+																																																																																																																																radioButton_4.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																radioButton_4.setBounds(134, 130, 78, 23);
+																																																																																																																																Editar_Ins.add(radioButton_4);
+																																																																																																																																
+																																																																																																																																JRadioButton radioButton_5 = new JRadioButton("Masculino");
+																																																																																																																																radioButton_5.setBackground(SystemColor.inactiveCaption);
+																																																																																																																																radioButton_5.setBounds(44, 130, 78, 23);
+																																																																																																																																Editar_Ins.add(radioButton_5);
+																																																																																																																																
+																																																																																																																																JLabel label_75 = new JLabel("Sexo:");
+																																																																																																																																label_75.setBounds(6, 134, 46, 14);
+																																																																																																																																Editar_Ins.add(label_75);
+																																																																																																																																
+																																																																																																																																JLabel label_76 = new JLabel("Endere\u00E7o:");
+																																																																																																																																label_76.setBounds(6, 160, 58, 14);
+																																																																																																																																Editar_Ins.add(label_76);
+																																																																																																																																
+																																																																																																																																textField_29 = new JTextField();
+																																																																																																																																textField_29.setColumns(10);
+																																																																																																																																textField_29.setBounds(6, 177, 220, 28);
+																																																																																																																																Editar_Ins.add(textField_29);
+																																																																																																																																
+																																																																																																																																JLabel label_77 = new JLabel("N\u00BA:");
+																																																																																																																																label_77.setHorizontalAlignment(SwingConstants.LEFT);
+																																																																																																																																label_77.setBounds(238, 160, 29, 14);
+																																																																																																																																Editar_Ins.add(label_77);
+																																																																																																																																
+																																																																																																																																textField_30 = new JTextField();
+																																																																																																																																textField_30.setColumns(10);
+																																																																																																																																textField_30.setBounds(238, 177, 62, 28);
+																																																																																																																																Editar_Ins.add(textField_30);
+																																																																																																																																
+																																																																																																																																JLabel label_78 = new JLabel("Complemento:");
+																																																																																																																																label_78.setBounds(6, 207, 97, 14);
+																																																																																																																																Editar_Ins.add(label_78);
+																																																																																																																																
+																																																																																																																																textField_31 = new JTextField();
+																																																																																																																																textField_31.setColumns(10);
+																																																																																																																																textField_31.setBounds(6, 225, 185, 28);
+																																																																																																																																Editar_Ins.add(textField_31);
+																																																																																																																																
+																																																																																																																																JLabel label_79 = new JLabel("Bairro:");
+																																																																																																																																label_79.setBounds(203, 206, 55, 16);
+																																																																																																																																Editar_Ins.add(label_79);
+																																																																																																																																
+																																																																																																																																textField_32 = new JTextField();
+																																																																																																																																textField_32.setColumns(10);
+																																																																																																																																textField_32.setBounds(203, 225, 99, 28);
+																																																																																																																																Editar_Ins.add(textField_32);
+																																																																																																																																
+																																																																																																																																JButton button_7 = new JButton("Cancelar");
+																																																																																																																																button_7.setBounds(6, 321, 89, 23);
+																																																																																																																																Editar_Ins.add(button_7);
+																																																																																																																																
+																																																																																																																																JButton button_8 = new JButton("Cadastrar");
+																																																																																																																																button_8.setBounds(525, 321, 89, 23);
+																																																																																																																																Editar_Ins.add(button_8);
+																																																																																																																																
+																																																																																																																																JLabel label_80 = new JLabel("Nascimento :");
+																																																																																																																																label_80.setBounds(309, 160, 75, 14);
+																																																																																																																																Editar_Ins.add(label_80);
+																																																																																																																																
+																																																																																																																																JLabel label_81 = new JLabel("Dia");
+																																																																																																																																label_81.setBounds(396, 160, 29, 14);
+																																																																																																																																Editar_Ins.add(label_81);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_11 = new JComboBox();
+																																																																																																																																comboBox_11.setBounds(396, 181, 59, 20);
+																																																																																																																																Editar_Ins.add(comboBox_11);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_12 = new JComboBox();
+																																																																																																																																comboBox_12.setBounds(459, 181, 59, 20);
+																																																																																																																																Editar_Ins.add(comboBox_12);
+																																																																																																																																
+																																																																																																																																JLabel label_82 = new JLabel("M\u00EAs");
+																																																																																																																																label_82.setBounds(459, 160, 29, 14);
+																																																																																																																																Editar_Ins.add(label_82);
+																																																																																																																																
+																																																																																																																																JLabel label_83 = new JLabel("Ano");
+																																																																																																																																label_83.setBounds(525, 160, 29, 14);
+																																																																																																																																Editar_Ins.add(label_83);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_13 = new JComboBox();
+																																																																																																																																comboBox_13.setBounds(523, 181, 75, 20);
+																																																																																																																																Editar_Ins.add(comboBox_13);
+																																																																																																																																
+																																																																																																																																JLabel label_84 = new JLabel("CEP:");
+																																																																																																																																label_84.setBounds(309, 207, 55, 16);
+																																																																																																																																Editar_Ins.add(label_84);
+																																																																																																																																
+																																																																																																																																textField_33 = new JTextField();
+																																																																																																																																textField_33.setColumns(10);
+																																																																																																																																textField_33.setBounds(309, 224, 97, 28);
+																																																																																																																																Editar_Ins.add(textField_33);
+																																																																																																																																
+																																																																																																																																JLabel label_85 = new JLabel("Cidade:");
+																																																																																																																																label_85.setBounds(413, 209, 46, 14);
+																																																																																																																																Editar_Ins.add(label_85);
+																																																																																																																																
+																																																																																																																																textField_34 = new JTextField();
+																																																																																																																																textField_34.setColumns(10);
+																																																																																																																																textField_34.setBounds(413, 224, 122, 28);
+																																																																																																																																Editar_Ins.add(textField_34);
+																																																																																																																																
+																																																																																																																																JLabel label_86 = new JLabel("UF:");
+																																																																																																																																label_86.setBounds(539, 209, 29, 14);
+																																																																																																																																Editar_Ins.add(label_86);
+																																																																																																																																
+																																																																																																																																JComboBox comboBox_14 = new JComboBox();
+																																																																																																																																comboBox_14.setBounds(539, 225, 59, 26);
+																																																																																																																																Editar_Ins.add(comboBox_14);
+																																																																																																																																
+																																																																																																																																JLabel label_87 = new JLabel("E-Mail:");
+																																																																																																																																label_87.setBounds(6, 264, 46, 14);
+																																																																																																																																Editar_Ins.add(label_87);
+																																																																																																																																
+																																																																																																																																textField_35 = new JTextField();
+																																																																																																																																textField_35.setColumns(10);
+																																																																																																																																textField_35.setBounds(6, 281, 293, 28);
+																																																																																																																																Editar_Ins.add(textField_35);
+																																																																																																																																
+																																																																																																																																JLabel label_88 = new JLabel("Telefone");
+																																																																																																																																label_88.setBounds(311, 265, 60, 14);
+																																																																																																																																Editar_Ins.add(label_88);
+																																																																																																																																
+																																																																																																																																textField_36 = new JTextField();
+																																																																																																																																textField_36.setColumns(10);
+																																																																																																																																textField_36.setBounds(309, 281, 116, 28);
+																																																																																																																																Editar_Ins.add(textField_36);
+																																																																																																																																
+																																																																																																																																JLabel label_89 = new JLabel("Celular");
+																																																																																																																																label_89.setBounds(452, 264, 60, 14);
+																																																																																																																																Editar_Ins.add(label_89);
+																																																																																																																																
+																																																																																																																																textField_37 = new JTextField();
+																																																																																																																																textField_37.setColumns(10);
+																																																																																																																																textField_37.setBounds(452, 280, 116, 28);
+																																																																																																																																Editar_Ins.add(textField_37);
 																																																																																																																																button_2.addActionListener(new ActionListener() {
 																																																																																																																																	public void actionPerformed(ActionEvent arg0) {
 																																																																																																																																		Cliente aux = new Cliente();
