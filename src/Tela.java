@@ -121,6 +121,8 @@ public class Tela extends JFrame {
 	private JTextField textField_35;
 	private JTextField textField_36;
 	private JTextField textField_37;
+	private JTextField textField_38;
+	private JTable table_5;
 
 	/**
 	 * Launch the application.
@@ -1689,6 +1691,67 @@ public class Tela extends JFrame {
 		textField_37.setColumns(10);
 		textField_37.setBounds(452, 280, 116, 28);
 		Editar_Ins.add(textField_37);
+
+		JPanel Buscar_Ins = new JPanel();
+		CardAdmin.add(Buscar_Ins, "name_3164990033148");
+		Buscar_Ins.setLayout(new BorderLayout(0, 0));
+
+		JPanel panel_10 = new JPanel();
+		Buscar_Ins.add(panel_10, BorderLayout.NORTH);
+
+		textField_38 = new JTextField();
+		textField_38.setColumns(10);
+
+		JButton button_9 = new JButton("Buscar");
+		GroupLayout gl_panel_10 = new GroupLayout(panel_10);
+		gl_panel_10.setHorizontalGroup(gl_panel_10
+				.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 620, Short.MAX_VALUE)
+				.addGroup(
+						gl_panel_10
+								.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(textField_38,
+										GroupLayout.DEFAULT_SIZE, 529,
+										Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(button_9).addContainerGap()));
+		gl_panel_10.setVerticalGroup(gl_panel_10
+				.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 23, Short.MAX_VALUE)
+				.addGroup(
+						gl_panel_10
+								.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField_38,
+										GroupLayout.PREFERRED_SIZE,
+										GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(button_9)));
+		panel_10.setLayout(gl_panel_10);
+
+		JPanel panel_11 = new JPanel();
+		Buscar_Ins.add(panel_11, BorderLayout.SOUTH);
+		panel_11.setLayout(new GridLayout(0, 2, 1, 1));
+
+		JButton btnEditarInstrutor = new JButton("Editar Instrutor");
+		panel_11.add(btnEditarInstrutor);
+
+		JButton btnRemoverInstrutor = new JButton("Remover Instrutor");
+		panel_11.add(btnRemoverInstrutor);
+
+		JPanel panel_12 = new JPanel();
+		Buscar_Ins.add(panel_12, BorderLayout.CENTER);
+		panel_12.setLayout(new GridLayout(0, 1, 0, 0));
+
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3
+				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		panel_12.add(scrollPane_3);
+
+		table_5 = new JTable();
+		table_5.setModel(new DefaultTableModel(new Object[][] {}, new String[] {
+				"Matricula", "Nome" }));
+		scrollPane_3.setViewportView(table_5);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Cliente aux = new Cliente();
