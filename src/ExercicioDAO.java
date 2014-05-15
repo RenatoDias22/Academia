@@ -8,19 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExercicioDAO {
-	private static final String FILENAME = "exercicios";
 
-	static{
-		try {
-			new File(FILENAME).createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static List<String> lerExercicios() {
-		FileReader fr = null;
-		BufferedReader br = null;
+	public static List<String> buscarExercicios() {
+		Connenction con=null;
+		
 		try {
 			fr = new FileReader(FILENAME);
 			br = new BufferedReader(fr);
